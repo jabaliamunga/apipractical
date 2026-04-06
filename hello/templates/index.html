@@ -98,6 +98,12 @@
             <td>{{ x.name }}</td>
             <td>{{ x.course }}</td>
             <td>{{ x.age }}</td>
+            <td>
+                <form action="http://127.0.0.1:8000/delete_student/{{ x.id }}/" method="post" style="display:inline;">
+                  {% csrf_token %}
+                <button type="submit">DELETE</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </table>
