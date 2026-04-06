@@ -1,3 +1,4 @@
+
 # Django API Practical Project
 
 This Django project demonstrates basic CRUD operations using REST API endpoints for student data (name, course, age) and displays them on a web page.
@@ -25,3 +26,4 @@ python manage.py migrate
 
 # 5. Run the development server
 python manage.py runserver
+
