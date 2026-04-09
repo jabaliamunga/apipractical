@@ -8,20 +8,19 @@ from rest_framework import status
 
 def  front(request):
     return render(request, 'index.html')
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def get_students(request):
-    students = Student.objects.all()
-    serializer = StudentSerializer(students, many=True)
-    return Response(serializer.data)  #api endpoint for fetching data
+    if request.method == 'GET':
+        students = Student.objects.all()
+        serializer = StudentSerializer(students, many=True)
+        return Response(serializer.data)  #api endpoint for fetching data
+    elif request.method == 'POST':
 
-
-@api_view(['POST'])
-def store_students(request):
-    serializer= StudentSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()  #save serializer to database
-        return redirect('fetchdata')
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) #api endpoint to store data
+        serializer= StudentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()  #save serializer to database
+            return redirect('fetchdata')
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) #api endpoint to store data
 
 @api_view(['DELETE', 'POST'])
 def delete_student(request, pk):
