@@ -27,3 +27,16 @@ python manage.py migrate
 # 5. Run the development server
 python manage.py runserver
 
+
+HERE ARE VIEWSET AND ROUTER ENDPOINTS FOR MY DRF LEARNING
+| Action   | Method | URL            |
+| -------- | ------ | -------------- |
+| List     | GET    | `/students/`   |
+| Create   | POST   | `/students/`   |
+| Retrieve | GET    | `/students/1/` |
+| Update   | PUT    | `/students/1/` |
+| Delete   | DELETE | `/students/1/` |
+
+VIEWSET handles all CRUD operations automatically it reduces work load of using if request.method == 'POST' etc all CRUD operations can be performed inside a single class basedview linked to a router in urls.py To use a router run from rest_framework.router import Defaultrouter then router= DefaultRouter() #now register url router.register(r'urlname', name of class based viewset) 
+
+
