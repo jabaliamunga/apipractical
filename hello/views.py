@@ -42,5 +42,15 @@ def fetchdata(request):
     data=response.json()
     return render(request, 'index.html', {'data':data})
 
+#today is all about handling viewsets and routers viewsets handle crud operations automatically you dont need to use eg if request.method =='POST': etc evertime NB instead of writing 50 lines of code all CRUD operations can be done on a single class based view
+#routers are written in views.py instead of using path('students/'.....) routers generates them
+
+from rest_framework import viewsets
+from .models import Student
+from .serializers import StudentSerializer
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
        
 # Create your views here.
